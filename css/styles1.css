@@ -39,15 +39,15 @@
 
 .parallax-group div:nth-child(1) {
   background-color: #ffe4c7;
-  margin-top: 600px;
+  margin-top: 250px;
   background-color: #d9d1b8;
-  -webkit-transform: translateZ(-12px) scale(13);
-          transform: translateZ(-12px) scale(13);
+  -webkit-transform: translateZ(-11px) scale(13);
+          transform: translateZ(-11px) scale(13);
 }
 .parallax-group div:nth-child(1):before {
-  content: "";
+  content: "Hi!";
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: absolute;
   bottom: 100%;
   left: 0;
@@ -87,16 +87,16 @@
           transform: translateZ(-8px) scale(9);
 }
 .parallax-group div:nth-child(3):before {
-  content: "Hi!";
+  content: "my";
   width: 100%;
-  height: 200px;
+  height: 130px;
   position: absolute;
   bottom: 100%;
   left: 0;
   background-image: -webkit-linear-gradient(315deg, transparent 66%, #8cab9b 66.01%), -webkit-linear-gradient(45deg, #8cab9b 34%, transparent 34.01%);
   background-image: linear-gradient(135deg, transparent 66%, #8cab9b 66.01%), linear-gradient(45deg, #8cab9b 34%, transparent 34.01%);
   background-position: 219px 0px;
-  background-size: 200px 100%;
+  background-size: 250px 100%;
   background-repeat: repeat-x;
 }
 
@@ -108,9 +108,9 @@
           transform: translateZ(-6px) scale(7);
 }
 .parallax-group div:nth-child(4):before {
-  content: "my";
+  content: "name";
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: absolute;
   bottom: 100%;
   left: 0;
@@ -129,9 +129,9 @@
           transform: translateZ(-4px) scale(5);
 }
 .parallax-group div:nth-child(5):before {
-  content: "name";
+  content: "is";
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: absolute;
   bottom: 100%;
   left: 0;
@@ -150,9 +150,9 @@
           transform: translateZ(-2px) scale(3);
 }
 .parallax-group div:nth-child(6):before {
-  content: "is";
+  content: "";
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: absolute;
   bottom: 100%;
   left: 0;
