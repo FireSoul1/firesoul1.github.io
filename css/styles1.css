@@ -4,7 +4,7 @@
   width: 100%;
   top: 0px;
   z-index: 0;
-  background-color: #ffe4c7;
+
 }
 
 .layer {
@@ -41,7 +41,7 @@
 
 .parallax-group div:nth-child(1) {
   background-color: #ffe4c7;
-  margin-top: 200px;
+  margin-top: 250px;
   background-color: #d9d1b8;
   -webkit-transform: translateZ(-11px) scale(13);
           transform: translateZ(-11px) scale(13);
