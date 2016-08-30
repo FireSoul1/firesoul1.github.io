@@ -4,8 +4,12 @@
   width: 100%;
   top: 0px;
   z-index: 0;
-
 }
+footer {
+  background-color: #ffe4c7;
+  color: #000000;
+}
+
 
 .layer {
   position: fixed;
