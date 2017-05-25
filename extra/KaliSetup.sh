@@ -20,7 +20,7 @@ mv ssh_host* bad_old/
 ##make new Keys
 dpkg-reconfigure openssh-server
 ##check if the service is inactive
-tester=`service ssh status | grep "inactive "``
+tester=`service ssh status | grep "inactive "`
 if [ "$tester" = "" ]; then
     echo "SSH is inactive. Starting up!"
     service ssh start
@@ -34,12 +34,13 @@ curl ipinfo.io/ip > /usr/share/IPAddress
 #Now you want to create another user
 ##NOTE: Have the students change the password
 useradd -m student -s /bin/bash --password "ThisIsSecure"
+echo "Now to set up your password:"
+passwd student
 
 #Have the message of the day be the current date
 echo "Welcome to Kali Linux" >> /etc/motd
 echo "echo "Today is \`date +"%m/%d/%y"\`"" >> /etc/profile
 
 
-
 #TODO: Add a MOTD that is a security article or fact
-echo "DONE! Enjoy Kali on your RasPi!"
+echo "DONE! Log out, and log back in as student. Enjoy your RasPi!"
