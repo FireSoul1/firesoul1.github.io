@@ -451,17 +451,7 @@ footer {
 }
 .Cloud.Background {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAqCAYAAAAUJM0rAAACFUlEQVRo3u3aPSwDYRzH8UZEbAYiYrDYjLZGpIPBJLGwSKwi0k1iYBKDdFJsEiMxSZgsFZJGiGjqJWEhSKuaNKRUG8r5PfI8SXOud72+PH2eu2f47Ndv7+V5/nee/G6bh5MWmIV9iEMWvkGjfiADD7AHk9BU6+PSNK0kPAINwwXkC6KU6gvC4HVyKB/clhHHCDnbTqHbSaEaYIv+OK3KyBk274RQrXBXg0B6B/QPkTIUiZTiEIm5gkbZQjXTJ5nG2ZFsocJ1iMQEZQk1VcdIGl2L9Yoeitwj3uocirgRPVRAgEjMoMihkgKFStIzK063QVHYhKF6h/IKFMlKGpaNlhM8Qq1JFIp5gQHeoSIShmJPST/PUElJQ7FN9hivUGmJQxE56OQRKiN5qL/NNY9QKQeEIpdgR7VC9cEqHeGeUyEHXHrMUiWhyKx6BV4dEsNMtNxQI4Ls33h5LidUoEYjXKEXoXZDLbgsEBOzE8qne8fmJhE7oWIujUQcwhyMmy0VSKRRF0cyWlclYMYo1LEKZOgRugpDpVWUot5ZLI8LlwN23bNQKoY1vwpVmmsS6kOFsPRJQl2qENZIqGkVwnp9xb5nUksEcxm2hZlQMcy3OYXTgx0VpOi2pl8/jwqpMP9sF5twBl08ctE7I/dws5l5D5y4OBj51HvdzluYdlik0RL06cjkKpSlB1Span5x/AQb5Hfrxyy/oU5ISeVw53AAAAAASUVORK5CYII=);
-}
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
+};
 }
 body {
   color: #FFF;
@@ -481,7 +471,7 @@ body {
 div.btn-default { height: 54px; border-radius: 0; border: 0; width: 320px; text-align: left; margin: -1 0 2rem 10; position: relative; background-color: #FFFFFF; padding: 10px; transition: all .35s; padding: 0; line-height: 47px; overflow: hidden;}
 div.btn-default i { display: block; float: left; position: absolute; width: 23; left: 14px; top: 10px; font-size: 20px; color: #FFFFFF; position: relative; z-index: 1;  }
 div.btn-default h5 { position: relative; z-index: 1; padding-left: 10px; }
-div.btn-default:after { content: ''; display: block; width: 44px; height: 54px; position: absolute; top: 0; left: 0; z-index: 0; transition: all .35s; }
+div.btn-default:after { display: block; width: 44px; height: 54px; position: absolute; top: 0; left: 0; z-index: 0; transition: all .35s; }
 div.twitter-btn:after { background-color: #ff3366; }
 div.btn-default:hover, div.btn-default:focus { background-color: #FFFFFF; color: #FFFFFF; }
 div.btn-default:hover:after { width: 100%; }
