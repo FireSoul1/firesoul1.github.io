@@ -1,0 +1,121 @@
+footer {
+    font-family: cursive, sans-serif;
+    font-style: oblique;
+}
+body {
+    height: 101vh;
+    --sliding-rate : 45s;
+    --bkg-size : 301%;
+    background-image: radial-gradient(
+        circle at 90% 33%, rgba(16, 6, 204, 0.245) 0%, rgba(130,6,213,0.2) 30%, rgba(130,6,213,0.6) 60%,rgba(152, 227, 240, 0.139) 100%), 
+    radial-gradient(
+        circle at 90% 10%, rgba(17,6,204,0.2) 0%, rgba(130,6,213,0.2) 40%, rgba(152, 227, 240, 0.139) 100%), 
+    radial-gradient(
+        circle at 50% 50%, rgba(6, 1, 98, 0.152) 0%, rgba(189, 122, 234, 0.196) 70%, rgba(2, 88, 101, 0.136) 100%);
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-flow: row;
+}
+.box {    
+    flex : 3 1 auto;
+    margin: 1.5vw 0 1.5vw 1vw;
+    padding: 1vw 1vw 1vw 1vw;
+
+    color: black;
+    
+    box-shadow: 0 0 100% 3px rgba(100, 111, 220, 80);
+    
+    background: radial-gradient(circle at 10% 160%, rgba(17,6,204,0.1) 0%, rgba(130,6,213,0.1) 40%, rgba(152, 227, 240, 0.139) 100%), radial-gradient(circle at -40% -33%, rgba(17,6,204,0.12) 0%, rgba(152, 227, 240, 0.139) 100%);
+
+    border-radius: 10px;
+}
+
+#title {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-flow: column;
+    justify-items: center;
+    align-items: center;
+    flex: 4;
+
+    width: 66%;
+
+    margin-left: 17%;
+    padding-right: 10%;
+    padding-left: 10%;
+
+}
+#title h1 {
+    font-size: large;
+    font-family: cursive;
+    flex: 2;
+}
+#title h3 {
+    font-size: medium;
+    flex: 2;
+}
+
+#menu { 
+    display: flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+    justify-items: center;
+    justify-content: space-between;
+    column-gap: 0.9vw;
+    
+    width: 66%;
+
+    margin-left: 17%;
+    padding-right: 10%;
+    padding-left: 10%;
+
+
+}
+#menu > h2 {
+    font-size: 1.9vw;
+    font-family: cursive;
+    padding-left: calc(50% - (0.5vw * 6));
+    flex : 100%;
+    align-items: center;
+}
+#menu > .box {
+    font-family: sans-serif;
+    flex : 1 1 1vw;
+    flex-basis: content;
+    text-align: center;
+}
+
+
+#crafts { 
+    display: flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+    justify-items: center;
+    justify-content: space-between;
+    column-gap: 0.9vw;
+    
+    width: 66%;
+
+    margin-left: 17%;
+    padding-right: 10%;
+    padding-left: 10%;
+
+}
+#crafts h1 {
+    font-size: 2vw;
+    font-family: cursive;
+    padding-left: calc(50% - (0.5vw * 6));
+    flex : 100%;
+    align-items: center;
+}
+#crafts .box {
+    --bkg-size : 100%;
+    --sliding-rate : 35s;    
+    flex : 1 1 4vw;
+    flex-basis: content;
+    text-align: center;
+}

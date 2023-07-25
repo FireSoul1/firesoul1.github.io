@@ -1,0 +1,21 @@
+.slide_bkg {
+    background-size: var(--bkg-size);
+    background-position: 2% 2%;
+    animation: sliding_bkg infinite ease-in-out var(--sliding-rate);
+}
+
+
+
+@keyframes sliding_bkg {
+    0% { 
+        background-position: 0% -50%;
+        
+    }
+    50% {
+        background-position: 87% var(--bkg-size);
+    }
+    100% { 
+        background-position: 100% 0%;
+        
+    }   
+}
