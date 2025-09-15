@@ -1,40 +1,328 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>Craft Night</title>
-        <link rel="stylesheet" href="asssets/dis.css">
-        <link rel="stylesheet" href="asssets/animate.css">
-        <link rel="icon" type="image/x-icon" href="asssets/icon.png">
-        <script src="asssets/pre_made_thingz/umbrella.js"></script>
-        <script src="asssets/pre_made_thingz/anime.min.js"></script>
-        <script src="asssets/pre_made_thingz/tailwind.js"></script>
-        <script src="asssets/pre_made_thingz/vivus.min.js"></script>
-    </head>
-    <body class="slide_bkg">
-        <div class="flex-container box" id="title">
-            <h1>Craft Night</h1>
-            <h3>Come here to work on a passion and share!</h3>
-            <h3>You will be fed</h3>
-        </div>
-        <div class="flex-container box" id="menu">
-            <h2>Menu</h2>
-            <div class="box">Lamb&nbsp;+&nbsp;Beef Gyro</div>
-            <div class="box"><img style="margin-bottom: 3px; height : 1.5vw; width : 1.5vw; display: inline-flex;" src="asssets/leaf.png" /> Jackfruit Gyro</div>
-            <div class="box">Snacks</div>
-        </div>
-        <div class="flex-container box" id="crafts">
-            <h1>Crafts</h1>
-            <div class="box slide_bkg">Knitting</div>
-            <div class="box slide_bkg">Crocheting</div>
-            <div class="box slide_bkg">Coloring</div>
-            <div class="box slide_bkg">Painting</div>
-            <div class="box slide_bkg">Popsicle Sticks</div>
-        </div>
-    </body>
-    <footer>
-        Made with love by <a href="https://github.com/Firesoul1">@Firesoul1</a>
-        <script>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
+        
+    <style>
+        div.gallery img {
+            width:30%;
+            height: 30%;
+            margin: 1rem;
+            padding: .1rem;
+            box-shadow: 2px 2px 5px #999;
 
-        </script>
-    </footer>
+            border: none;
+            border-radius: 2%;
+            border-bottom-style: solid;
+            border-bottom-left-radius: 3%;
+            border-bottom-right-radius: 3%;
+            border-bottom-width: 1%;
+        }
+        div.container {
+            display: contents;
+            width: 67%;
+            height: 67%;
+        }
+        .fa-regular {
+            color: #ffffff;
+            z-index: 2;
+            position: absolute;
+            margin-left: 1.4%;
+            margin-top: 1.4%;
+            font-size: xx-large;
+        }
+        dialog#popup {
+            z-index: 3;
+            width: fit-content;
+            border: none;
+            background-color: transparent;
+        }
+        img#preview { 
+            width: 100%;
+            height: 100%;
+        }
+        span.complete { 
+            z-index: 2;
+            
+        }
+        
+        span.guess {
+            display: flex;
+            position: fixed;
+            text-wrap: nowrap;
+        }
+        span.flex_container {
+            background-color: wheat;
+            display: flex;
+            justify-content: end;
+            align-items: end;
+        }
+        span.close {
+            background-color: wheat;
+        }
+        button#close_btn { 
+            margin-left: 0.5%;
+            background: transparent;
+            border: none;
+        }
+        span.guess * {
+            margin: 1%;
+            background-color: wheat;
+            padding: 1%;
+            box-shadow: 2px 2px 5px #999;
+            border: none;
+            border-radius: 2%;
+            border-bottom-style: solid;
+            border-bottom-left-radius: 6%;
+            border-bottom-right-radius: 9%;
+            border-bottom-width: 1%;
+
+        }
+        span.guess strong { 
+            width: fit-content;
+            padding-top: 2%;
+            background-color: wheat;
+        }
+        span.guess input { 
+            border: none;
+            z-index: 5;
+            float: left;
+            border: none;
+            border-bottom-style: solid;
+            border-bottom-left-radius: 6%;
+            border-bottom-right-radius: 9%;
+
+            /* floating button */
+            text-align: left;
+            font-size: 24px;            
+            box-shadow: 2px 2px 5px #999;
+            cursor: pointer;
+        }
+
+        body {
+            background: radial-gradient(circle at 100%, #FFDAB9, #FFC0CB, #FFA07A, #FF7F50);
+            background-size: 1000%;
+            animation-name: moving_gradient;
+            animation-duration: 7s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+            /* Font design*/
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        @keyframes moving_gradient {
+            from {background-position: 1%;}
+            to {background-position: 100%}
+        }
+        html { 
+            /* Optional: Adjust height and width for demonstration */
+            height: 100%;
+            width: 100%;
+        }
+        button.complete_btn { 
+            font-size: xx-large;
+            font-family: fantasy;
+            z-index: 6;
+            margin-left: 0.5%;
+            background: transparent;
+            border: none;
+            
+            /* floating button */
+            position: fixed;
+            float: right;
+            right: 1%;
+            text-align: left;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        button.complete_btn:hover { 
+            background: lightblue;
+            border-radius: 2%;
+            content: "\25AE";  /* this is your text. You can also use UTF-8 character codes as I do here */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    
+    <button class="complete_btn">         
+        <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+                d="M568.4 37.7C578.2 34.2 589 36.7 596.4 44C603.8 51.3 606.2 62.2 602.7 72L424.7 568.9C419.7 582.8 406.6 592 391.9 592C377.7 592 364.9 583.4 359.6 570.3L295.4 412.3C290.9 401.3 292.9 388.7 300.6 379.7L395.1 267.3C400.2 261.2 399.8 252.3 394.2 246.7C388.6 241.1 379.6 240.7 373.6 245.8L261.2 340.1C252.1 347.7 239.6 349.7 228.6 345.3L70.1 280.8C57 275.5 48.4 262.7 48.4 248.5C48.4 233.8 57.6 220.7 71.5 215.7L568.4 37.7z" />
+        </svg>
+        Submit
+    </button>
+    <dialog id="popup">
+        <div class="row" id="preview">
+            <span class="flex_container">
+                <em>
+                    Can hit `Esc` to close
+                </em>
+                <button id="close_btn" class="close material-symbols-outlined"> close </button>
+            </span>
+            <div id="input_container">
+
+            </div>
+            <img src="" id="img_preview"/>
+            
+        </div>
+    </dialog>
+    <h1>
+        What do You Spy?
+    </h1>
+    <h3>
+        Select any photo and see if you can answer the question!
+    </h3>
+    <div class="gallery" id="main">
+        
+    </div>
+</body>
+<footer>
+    <script>
+        submission = {}
+        idx = -1
+        addEventListener("keydown", (evt) => {
+            if ( evt.key == "Escape") {
+                close_dialog(evt)
+            }
+        })
+
+        function close_dialog(el) {
+            document.getElementById("input_container").innerHTML = ""
+            document.getElementById("popup").close()
+        }
+        function submit_ans(el) { 
+            submission[idx] = document.getElementById("guess").value.toLowerCase()
+            console.log(submission[idx], document.querySelectorAll(`[id*='${idx}'] i`), idx)
+            document.querySelectorAll(`[id*='${idx}'] i`).forEach( (el) => {
+                el.style.display = "inline"
+            })
+            close_dialog(el)
+        }
+        
+        function createImg(el) {
+            let img = document.createElement("img")
+            img.src = el.image
+            img.classList = ["thumbnail"]
+
+            img.onclick = (evt) => {
+
+                console.log(evt.srcElement.src, el.id, el.image)
+                document.getElementById("img_preview").src = evt.srcElement.src
+                document.getElementById("input_container").appendChild(
+                    createInput(el)
+                )
+                idx = el.id
+                document.getElementById("popup").showModal()
+
+            }
+            return img
+        }
+        function createInput(el) {
+            let input = document.createElement("span")
+            input.innerHTML = `
+                <strong>
+                    ${el.question}
+                </strong>
+                <input type="${el.type || "text"}" id="guess"/>
+                <button class="submit_btn" onclick="submit_ans()" >Enter</button>
+                `
+            input.classList = ["guess"]
+            return input
+        }
+        data = {
+            "data": [
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczOsovQYzgyB5eA8_-Yi4MZZw_K_QsEwzsgCP79NWGm8a7PqOd-DJ_D1q7Y-NDlYuTblIIXdhwpsMC_SunU8IwzE_9UYUFYzIOleRHXIFI1J5STFjQzNs-2pZ0Z8ZIXl7eztxneS0BZwn6cID8huImuTGQ=w867-h653-s-no?authuser=0"
+                },
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczNGk06Ao-WW7MPMZwxrDSvmWBDFU1fG1O0UJ_99fAUjVaVCXIxiefh051fg0Qp6kGhmAiN6FwOY16OFR5xUHLPUsTtdZhoE_ctcLpchg-o5Htspu1S_hqbGbTy1113BHTpDBo9XEzQ15CTkFMV_Y8HMoQ=w867-h653-s-no?authuser=0"
+                },
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczM1yMzawtMXlLmppNTzpokSt9OMqvLM7GP0sTKAZMq9PxvTRBBlbrIyCPgnFRKWbmH9AgNC9zYRedfp2VblAo4iLeMcx9fmOMo_JNJv8BwTAw6Zwl3dbRMl-fHS5e9UsqVEJAJ_E6t86ZNwkoQCw0Z8Og=w1117-h1483-s-no?authuser=0"
+                },
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczODlFsSeb-aQfPAISwnkAKQkpR5xrc4bS9GblOSavCIzGiz5mfnIObuvy2uoGDx4ESC_4_OpjQ43QGrQ27tAOXSoJFfftSkl9-mhH4xeC7IfeOcZ9kvHhgBfT9ZHWe8EJpd67Y0I7pvCF8EgxV29STDSA=w1117-h1483-s-no?authuser=0"
+                },
+                {
+                    "question": [
+                        "How many chipmunks do you see?"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczNvwjGxFN0zNbjUlU8DB6CAg_MywFGnqivfMyI8qrvZzhq04oeJbgl0uD_ZIvaAYKOG9RuisbWACkgVmMhRuLeHL3WVYi434i5yk_rSUB4i_k2jP1gIgFL_hDc6qz8VXJirUV2QC1_heQRLQRrE017uBA=w1117-h1483-s-no?authuser=0",
+                    "type": "number"
+                },
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczOrJOg0ELepbrTA25UYFKJf0q3s3AqKFYhqOAeddV59xcOm19N4yFeQBGbRJ6r-v1ArIH21zSXDViBKT2WHGsrQ4PW_FAKcp8nQCDSfw3wRnLBgsizCwtYt-DNJVCB64YcyY5PMZ3e_kbCzESrlG1w1LQ=w1117-h1483-s-no?authuser=0"
+                },
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczMVSt_0uaGOqA968rpOIei1ZbZw8fjzUZAwN81FTKo-K947AaVoKOdnb8QZ4gQ6_8XeqlEgG8R0ay84bHjVlIIX4gy2rJHWPxR_6U15HUv2lplT883TxlGfkn1Jw2aPlu0nYEuCMDwtAhe9X8--RtUVLg=w1117-h1483-s-no?authuser=0"
+                },
+                {
+                    "question": [
+                        "How many butterflies do you see?"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczNLy7Bb1m7Cry0A6vbk8VX3jI8xkzQY0YsPzrKklGK2Hf9pxfQASJaeBbkM8jYpgZuU9s3tb3u0zbNxWj5xlQ9OiYEyF8Fvx3eVav1jGovOTPsNk0V3Oi7RKn5K0JlOBbiOnOFEMhG_Gjdi6vCGnriMjA=w1971-h1484-s-no?authuser=0",
+                    "type" : "number"
+                },
+                {
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczM30C7QhbpmMp_vNJ7XXvXx4_c9A5hySIPKXNRll3dCpk65sgbxqh_7ETMl-V6hwfw6MU96xUj1VRxI_tvoPiHmynz-MkG9m6pv6R2TzvvtSzKeYTlAfmVgog6CKs9ELFpYgwuMyluMUpwE29z3CBizfg=w1117-h1483-s-no?authuser=0"
+                },
+                {
+                    "image": "https://lh3.googleusercontent.com/pw/AP1GczPppZXCAOV_tUwjxpHWbCm85O3RA3NwEfSX846oEgFnKUGy-Xz450QBoJ0JjljZnn3OkmRnK0qLmhV7SRU84CS2tckt5TZytQCTkCDB6cUCAA_eRhTllTLdlC434CUPHgmoHbRdFJw6rfJfRFCLgdILjQ=w1508-h830-s-no?authuser=0",
+                    "question": [
+                        "What do you see here? 'Nothing' is acceptable"
+                    ],
+                }
+            ]
+        }
+
+        data.data.forEach((el) => {
+
+            let container = document.createElement("div")
+            container.classList.add("container")
+            container.id = el.image.split("pw/")[1].split("?")[0].split("-")[0]
+            el.id = container.id
+            
+            check = document.createElement("i")
+            check.classList = "fa-regular fa-circle-check"
+            check.style.display = "none"
+            container.appendChild(
+                check
+            )
+            container.appendChild(
+                createImg(el)
+            )
+            document.getElementById("main").appendChild(
+                container
+            )
+        })
+        
+        document.getElementById("close_btn").addEventListener( "click", close_dialog)
+    </script>
+</footer>
 </html>
