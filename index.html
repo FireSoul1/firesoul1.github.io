@@ -45,9 +45,15 @@
                 content: url("https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781647223700/the-art-of-the-national-parks-fifty-nine-parks-9781647223700_hr.jpg");
             }
             
-        }@keyframes flipz_up {
+        }
+        @keyframes flipz_up {
+            
+            
+        }
+        @keyframes slide_in {
             0% {
                 transform: rotate3d(0);
+                transform: translate(-100%,-100%);
             }
             23% {
                 transform: rotate3d(0,1,0,-180deg);
@@ -62,6 +68,7 @@
                 transform: rotate3d(0,1,0,90deg);
             }
             100% { 
+                transform: translate(0,0);
                 transform: rotate3d(0,1,0,0);
             }
             
@@ -80,13 +87,13 @@
             border-bottom-right-radius: 3%;
             border-bottom-width: 1%;
 
-            animation: 1.43s linear 0s alternate flipz_up;
         }
         div.container {
             display: ruby;
             width: 67%;
             height: 67%;
         }
+        
         div.container img:hover {
             animation: 0.13s linear 0s alternate tilt;
             border-color: cornflowerblue;
@@ -95,7 +102,7 @@
             
         }
         div.container img.completed {
-            animation: 1.13s linear 0s alternate flipz_down;
+            animation: 0.83s linear 0s alternate flipz_down;
             content: url("https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781647223700/the-art-of-the-national-parks-fifty-nine-parks-9781647223700_hr.jpg")
         }
         .fa-regular {
@@ -419,7 +426,7 @@
                 title: 'Completed',
                 text: `I generated a unique link for your responses. Feel free to share! ${link}`,
                 icon: 'success',
-                confirmButtonText: 'Done? Click here, daddy',
+                confirmButtonText: 'Done? Click me, daddy. I mean, exit.',
                 theme : 'dark'
             })
         })
