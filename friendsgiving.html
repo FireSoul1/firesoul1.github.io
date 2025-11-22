@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/589/589782.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -547,14 +548,13 @@
                             animation = drawer.animate({
                                 transform: 'translateX(-97%)'
                             }, {
-                                duration: 500,
+                                duration: 170,
                                 iteration: 1,
                                 rangeStart: "cover 0%",
                                 rangeEnd: "cover 100%",
                             })
                             animation.pause()
                             animation.onfinish = (event) => {
-                                console.log('sdjiao')
                                 drawer.style.right = "0%";
                             };
                             animation.play()
@@ -564,7 +564,7 @@
                             (prev, el) => `${prev}<h4 class="ingredient"><a target="_blank" href=https://www.britannica.com/search?query=${el.trim().toLocaleLowerCase().replace(' ','+')}>${el}</a></h4>`
                         )
                         chef.innerHTML = `Chef : ${entry["chef"]}`
-                        drawer.style.opacity = "0.91";
+                        drawer.style.opacity = "0.94";
 
 
                     }
