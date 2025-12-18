@@ -4,8 +4,75 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
-        
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+        @keyframes tilt {
+            0% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(0.12rad);
+            }
+            50% {
+                transform: rotate(0rad);
+            }
+            75% {
+                transform: rotate(-0.12rad);
+            }
+            100% {
+                transform: rotate(0);
+            }
+            
+        }
+        @keyframes flipz_down {
+            0% {
+                transform: rotate3d(0);
+            }
+            23% {
+                transform: rotate3d(0,1,0,-180deg);
+            }
+            46% {
+                transform: rotate3d(0,1,0,180deg);
+            }
+            66% {
+                transform: rotate3d(0,1,0,-90deg);
+            }
+            88% {
+                transform: rotate3d(0,1,0,90deg);
+            }
+            100% { 
+                transform: rotate3d(0,1,0,0);
+                content: url("https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781647223700/the-art-of-the-national-parks-fifty-nine-parks-9781647223700_hr.jpg");
+            }
+            
+        }
+        @keyframes flipz_up {
+            
+            
+        }
+        @keyframes slide_in {
+            0% {
+                transform: rotate3d(0);
+                transform: translate(-100%,-100%);
+            }
+            23% {
+                transform: rotate3d(0,1,0,-180deg);
+            }
+            46% {
+                transform: rotate3d(0,1,0,180deg);
+            }
+            66% {
+                transform: rotate3d(0,1,0,-90deg);
+            }
+            88% {
+                transform: rotate3d(0,1,0,90deg);
+            }
+            100% { 
+                transform: translate(0,0);
+                transform: rotate3d(0,1,0,0);
+            }
+            
+        }
         div.gallery img {
             width:30%;
             height: 30%;
@@ -19,20 +86,38 @@
             border-bottom-left-radius: 3%;
             border-bottom-right-radius: 3%;
             border-bottom-width: 1%;
+
         }
         div.container {
-            display: contents;
+            display: ruby;
             width: 67%;
             height: 67%;
+        }
+        
+        div.container img:hover {
+            animation: 0.13s linear 0s alternate tilt;
+            border-color: cornflowerblue;
+            box-shadow: cyan;
+            opacity: 75%;
+            
+        }
+        div.container img.completed {
+            animation: 0.83s linear 0s alternate flipz_down;
+            content: url("https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781647223700/the-art-of-the-national-parks-fifty-nine-parks-9781647223700_hr.jpg")
         }
         .fa-regular {
             color: #ffffff;
             z-index: 2;
             position: absolute;
-            margin-left: 1.4%;
-            margin-top: 1.4%;
+            margin-left: 2.14%;
+            margin-top: 2.14%;
             font-size: xx-large;
+            display: none;
         }
+        .fa-regular.show_check {
+            display: inline-block;
+        }
+
         dialog#popup {
             z-index: 3;
             width: fit-content;
@@ -45,7 +130,6 @@
         }
         span.complete { 
             z-index: 2;
-            
         }
         
         span.guess {
@@ -144,11 +228,14 @@
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
         }
+        .show_check { 
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     
-    <button class="complete_btn">         
+    <button class="complete_btn" id="submit">         
         <svg xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
             <path
@@ -197,11 +284,20 @@
         }
         function submit_ans(el) { 
             submission[idx] = document.getElementById("guess").value.toLowerCase()
-            console.log(submission[idx], document.querySelectorAll(`[id*='${idx}'] i`), idx)
+            
             document.querySelectorAll(`[id*='${idx}'] i`).forEach( (el) => {
-                el.style.display = "inline"
+                el.classList = el.classList + " show_check"
+                
+            })
+            document.querySelectorAll(`[id*='${idx}'] img`).forEach((el) => {
+                el.classList = el.classList + " completed"
             })
             close_dialog(el)
+
+            if ( Object.keys(submission).length == data.data.length ) {
+                document.querySelectorAll('button.complete_btn')[0].style.color = "darkred"
+                document.querySelectorAll('button.complete_btn')[0].style.fill = "darkred"
+            }
         }
         
         function createImg(el) {
@@ -209,14 +305,12 @@
             img.src = el.image
             img.classList = ["thumbnail"]
 
-            img.onclick = (evt) => {
-
-                console.log(evt.srcElement.src, el.id, el.image)
+            img.onclick = (evt) => {                
+                idx = el.id
                 document.getElementById("img_preview").src = evt.srcElement.src
                 document.getElementById("input_container").appendChild(
                     createInput(el)
                 )
-                idx = el.id
                 document.getElementById("popup").showModal()
 
             }
@@ -232,6 +326,8 @@
                 <button class="submit_btn" onclick="submit_ans()" >Enter</button>
                 `
             input.classList = ["guess"]
+            console.log(input.value, submission[el.id] )
+            input.value = submission[el.id] || ""
             return input
         }
         data = {
@@ -310,7 +406,6 @@
             
             check = document.createElement("i")
             check.classList = "fa-regular fa-circle-check"
-            check.style.display = "none"
             container.appendChild(
                 check
             )
@@ -322,7 +417,26 @@
             )
         })
         
+        
         document.getElementById("close_btn").addEventListener( "click", close_dialog)
+        document.getElementById("submit").addEventListener("click", (evt) => {
+            
+            let link = `${window.location.pathname}?response=${ btoa(JSON.stringify(submission)) }`
+            Swal.fire({
+                title: 'Completed',
+                text: `I generated a unique link for your responses. Feel free to share! ${link}`,
+                icon: 'success',
+                confirmButtonText: 'Done? Click me, daddy. I mean, exit.',
+                theme : 'dark'
+            })
+        })
+
+        // Parse parameters if provided
+        submission = JSON.parse(
+            atob(
+                new URLSearchParams(window.location.search).get("response")
+            )
+        )
     </script>
 </footer>
 </html>
